@@ -35,6 +35,10 @@ class AICodingAgent:
         bugs = []
         if '==' in code and 'if' in code:
             bugs.append("Potential equality comparison issue")
+        if 'while True' in code:
+            bugs.append("Potential infinite loop")
+        if 'import os; os.system' in code:
+            bugs.append("Potential shell command injection")
         return bugs
 
 if __name__ == "__main__":
